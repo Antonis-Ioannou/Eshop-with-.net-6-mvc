@@ -132,7 +132,7 @@ namespace CirceBookWeb.Areas.Customer.Controllers
             if (applicationUser.CompanyId.GetValueOrDefault() == 0)
             {
                 //stripe settings 
-                var domain = "https://localhost:44302/";
+                var domain = "enter your domain here";
                 var options = new SessionCreateOptions
                 {
                     PaymentMethodTypes = new List<string>

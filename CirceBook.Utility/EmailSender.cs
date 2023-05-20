@@ -33,7 +33,7 @@ namespace CirceBook.Utility
             {
                 emailClient.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
                 //emailClient.Authenticate("aidubxr@gmail.com", "joongwfborrasdti");
-                emailClient.Authenticate("circebookstore@gmail.com", "tzxrvwqacunnmois");
+                emailClient.Authenticate("enter your username here", "enter your password here");
                 emailClient.Send(emailToSend);
                 emailClient.Disconnect(true);
             }
