@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Product>
+
+<div class="row pb-3">
+
+	<div class="input-group mb-3">
+		@using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "searchbox" }))
+		{
+			<div style="padding-left: 10px">
+				<b>Search by:</b>
+				<span style="margin: 0px 10px">
+					@Html.RadioButton("searchBy", "Title", true) <text>Title</text>
+					@Html.RadioButton("searchBy", "Author") <text>Author</text>
+					@Html.RadioButton("searchBy", "Category") <text>Category</text>
+				</span>
+			</div>
+			@Html.TextBox("search", null, new { @class = "text search-input", style = "width:80%; padding-left:10px; margin-right: 0px; border-top-right-radius: 0px", placeholder = "Search Here...", type = "search" })
+			<button type="submit" title="Search" style="background-color:darkgray"><i class="bi bi-search"></i></button>
+			@*<button id="ResetButton" title="Reset" style="background-color:darkgray"><i class="bi bi-x-circle"></i></button>*@
+		}
+	</div>
+
+	@foreach (var product in Model)
+	{
+		<div class="col-lg-3 col-md-6" style="scale:0.9px">
+			<div class="row p-2">
+				<div class="col-12 p-1" style="border:1px solid #008cba; border-radius:5px;">
+					<div class="card">
+						<img src="@product.ImageUrl" class="card-img-top rounded" style="height:300px;padding:0px 20px;" />
+						<div class="card-body" style="justify-content:center">
+							<div class="pl-1">
+								<div style="height:30px;margin-bottom:10px;">
+									<p class="card-title h5 text-primary">@product.Title</p>
+								</div>
+								<div>
+									<p class="card-title text-info">by <b>@product.Author</b></p>
+								</div>
+							</div>
+							<div class="pl-1">
+								<p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
+							</div>
+							<div class="pl-1">
+								<p>As low as: <b>$@product.Price100.ToString("0.00")</b></p>
+							</div>
+						</div>
+					</div>
+					<div>
+						<a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">Details</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+
+	@*if (Model.Count() == null)
+	{
+		<h3 style="text-align:center">No rows match search criteria</h3>
+	}
+	else
+	{
+		@foreach (var product in Model)
+		{
+			<div class="col-lg-3 col-md-6">
+				<div class="row p-2">
+					<div class="col-12 p-1" style="border:1px solid #008cba; border-radius:5px;">
+						<div class="card">
+							<img src="@product.ImageUrl" class="card-img-top rounded"/>
+							<div class="card-body">
+								<div class="pl-1">
+								<p class="card-title h5 text-primary">@product.Title</p>
+								<p class="card-title text-info">by <b>@product.Author</b></p>
+							</div>
+							<div class="pl-1">
+								<p>List Price: <strike><b>$@product.ListPrice.ToString("0.00")</b></strike></p>
+							</div>
+							<div class="pl-1">
+								<p>As low as: <b>$@product.Price100.ToString("0.00")</b></p>
+							</div>
+							</div>
+						</div>
+						<div>
+							<a asp-action="Details" class="btn btn-primary form-control" asp-route-productId="@product.Id">Details</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	}*@
+</div>
