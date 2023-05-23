@@ -32,7 +32,6 @@ namespace CirceBook.Utility
             using (var emailClient = new MailKit.Net.Smtp.SmtpClient())
             {
                 emailClient.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                //emailClient.Authenticate("aidubxr@gmail.com", "joongwfborrasdti");
                 emailClient.Authenticate("enter your username here", "enter your password here");
                 emailClient.Send(emailToSend);
                 emailClient.Disconnect(true);
